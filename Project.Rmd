@@ -2,7 +2,9 @@
 title: "Practical Machine Learning - Coursera - Project"
 author: "rgferreira"
 date: "june, 2015"
-output: html_document
+output:
+  html_document:
+    keep_md: yes
 ---
 
 #Executive Summary
@@ -148,7 +150,7 @@ rf.Model$finalModel
 ## Plots:
 
 - **Plot1**: Correlations (Exploratory)
-```{r, fig.width=8, fig.height= 8, warning=FALSE}
+```{r, fig.width=10, fig.height= 10, warning=FALSE}
 my_palette <- colorRampPalette(c("red", "yellow", "green"))(n = 299)
 col_breaks = c(seq(-1,0,length=100),  
   seq(0,0.7,length=100),             
@@ -162,8 +164,8 @@ plot(rf.Model$finalModel)
 ```
 
 - **Plot3**: Importance of predictors
-```{r, fig.width=8, fig.height=8}
-varImpPlot(rf.Model$finalModel,cex=1, col ="black", type=2)
+```{r, fig.width=4, fig.height=4}
+varImpPlot(rf.Model$finalModel,cex=0.65, col ="black", type=2)
 ```
 
 - **Plot4**: Other parameters
