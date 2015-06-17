@@ -32,14 +32,14 @@ if (!file.exists(trainFile)) {
         download.file(trainUrl, destfile=trainFile, method="curl")
 }
 testUrl <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
-testFile  <- "./dpml-testing.csv"
+testFile  <- "./pml-testing.csv"
 if (!file.exists(testFile)) {
         download.file(testUrl, destfile=testFile, method="curl")
 }
 
 # Cleaning data for invalid observations
-trainDf <- read.csv("./data/pml-training.csv", na.strings=c("NA","NaN","#DIV/0!", ""))
-testDf <- read.csv("./data/pml-testing.csv", na.strings=c("NA","NaN","#DIV/0!", ""))
+trainDf <- read.csv("./pml-training.csv", na.strings=c("NA","NaN","#DIV/0!", ""))
+testDf <- read.csv("./pml-testing.csv", na.strings=c("NA","NaN","#DIV/0!", ""))
 ```
 
 # Cleaning data:
@@ -148,12 +148,12 @@ rf.Model$finalModel
 ## Plots:
 
 - **Plot1**: Correlations (Exploratory)
-```{r, fig.width=16, fig.height= 16, warning=FALSE}
+```{r, fig.width=8, fig.height= 8, warning=FALSE}
 my_palette <- colorRampPalette(c("red", "yellow", "green"))(n = 299)
 col_breaks = c(seq(-1,0,length=100),  
   seq(0,0.7,length=100),             
   seq(0.7,1,length=100))          
-heatmap.2(corMatrix, key = T, cexRow = 0.8, dendrogram="column", cexCol = 0.8, margins=c(9,12), density.info="none", trace="none", ColV="NA")
+heatmap.2(corMatrix, key = T, cexRow = 0.6, dendrogram="column", cexCol = 0.6, margins=c(9,12), density.info="none", trace="none", ColV="NA")
 ```
 
 - **Plot2**: OOB Error progression across trees
@@ -162,8 +162,8 @@ plot(rf.Model$finalModel)
 ```
 
 - **Plot3**: Importance of predictors
-```{r, fig.width=14, fig.height=14}
-varImpPlot(rf.Model$finalModel,cex=1.5, col ="black", type=2)
+```{r, fig.width=8, fig.height=8}
+varImpPlot(rf.Model$finalModel,cex=1, col ="black", type=2)
 ```
 
 - **Plot4**: Other parameters
